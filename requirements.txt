@@ -1,0 +1,12 @@
+langgraph
+langchain
+langchain-openai
+langchain-community
+azure-search-documents
+azure-core
+openai
+python-dotenv
+streamlit
+sentence-transformers
+pydantic
+langsmith

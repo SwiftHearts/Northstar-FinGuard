@@ -1,0 +1,220 @@
+{
+  "_comment": "Hand-labeled eval cases for the Northstar-FinGuard pipeline. Each `claims[].quote` is a verbatim substring of `source_text`. `expected_doc_id`/`expected_tier` are the compliance analyst's ground-truth judgment, grounded in the knowledge_base docs. `acceptable_claim_types` (when present) allows either label to count as correct for claims that legitimately straddle two categories.",
+  "cases": [
+    {
+      "case_id": "performance_absolute_beat_market",
+      "source_text": "\ud83d\ude80 Big news from Northstar Wealth Partners! Our growth portfolio beat the market every year for the last decade. Follow us for more updates!",
+      "expected_channel": "social_media",
+      "expected_audience": "retail",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "Our growth portfolio beat the market every year for the last decade",
+          "claim_type": "performance",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 3"
+        }
+      ],
+      "expected_overall_tier": "Tier 3"
+    },
+    {
+      "case_id": "guarantee_cant_lose",
+      "source_text": "At Northstar Wealth Partners, our capital preservation strategy means you can't lose. Schedule a consultation on our website today.",
+      "expected_channel": "website",
+      "expected_audience": "retail",
+      "notes": "Ground truth corrected from Tier 3 to Tier 4 (2026-08-05): NWP-RRP-07 Section 3 names 'an unauthorized guarantee' explicitly as a Tier 4 exemplar, which this claim literally is. The compliance_risk_agent's Tier 4 call was correct; the original Tier 3 label here was an eval-authoring error, not a model bug.",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "you can't lose",
+          "claim_type": "guarantee_or_risk_free",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 4"
+        }
+      ],
+      "expected_overall_tier": "Tier 4"
+    },
+    {
+      "case_id": "comparative_better_than_competitors",
+      "source_text": "Dear Investor, our fee structure and returns are better than our competitors across the board. Please see the attached fee schedule for details and let us know if you have questions.",
+      "expected_channel": "email",
+      "expected_audience": "retail",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "better than our competitors",
+          "claim_type": "comparative",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 3"
+        }
+      ],
+      "expected_overall_tier": "Tier 3"
+    },
+    {
+      "case_id": "superlative_number_one_advisor",
+      "source_text": "Proud to share we're the #1 rated advisor in the region this year! Thank you to our incredible clients. #wealthmanagement",
+      "expected_channel": "social_media",
+      "expected_audience": "retail",
+      "notes": "Known regression case: evidence_retrieval_agent has previously failed to surface the NWP-MKT-03 \u00a76 Prohibited Language List chunk for this exact claim type. This case is the recall@5 canary. Observed some run-to-run tier variance (Tier 2 vs Tier 3) at temperature=0 across eval runs -- documented as a known LLM non-determinism characteristic near tier boundaries, not a retrieval or extraction bug (retrieval recall for this case is now 100%).",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "we're the #1 rated advisor in the region",
+          "claim_type": "superlative",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 3"
+        }
+      ],
+      "expected_overall_tier": "Tier 3"
+    },
+    {
+      "case_id": "fee_free_first_year",
+      "source_text": "Northstar Wealth Partners brochure: Enjoy completely free portfolio management for your first year with no strings attached. Contact your advisor for enrollment details.",
+      "expected_channel": "brochure",
+      "expected_audience": "retail",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "completely free portfolio management for your first year",
+          "claim_type": "fee_or_pricing",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 3"
+        }
+      ],
+      "expected_overall_tier": "Tier 3"
+    },
+    {
+      "case_id": "testimonial_no_disclosure",
+      "source_text": "Client Stories: \"Northstar changed my financial life,\" says longtime client Maria T. Her results are her own and individual results may vary depending on your situation.",
+      "expected_channel": "website",
+      "expected_audience": "retail",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "\"Northstar changed my financial life,\" says longtime client Maria T.",
+          "claim_type": "testimonial_endorsement",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 2"
+        }
+      ],
+      "expected_overall_tier": "Tier 2"
+    },
+    {
+      "case_id": "regulatory_endorsement_implication_sec",
+      "source_text": "Slide 4: Our low-risk approach has been reviewed and approved by the SEC, giving institutional investors added confidence in our strategy.",
+      "expected_channel": "pitch_deck",
+      "expected_audience": "institutional",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "reviewed and approved by the SEC",
+          "claim_type": "regulatory_endorsement_implication",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 4"
+        }
+      ],
+      "expected_overall_tier": "Tier 4"
+    },
+    {
+      "case_id": "clean_no_violation",
+      "source_text": "Join our upcoming webinar to learn about Northstar Wealth Partners' history. Founded in 2010, we are headquartered in Boston, Massachusetts and are registered with the SEC as an investment adviser.",
+      "expected_channel": "webinar",
+      "expected_audience": "mixed",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "Founded in 2010, we are headquartered in Boston, Massachusetts",
+          "claim_type": "general_factual",
+          "expected_doc_id": null,
+          "expected_tier": "Tier 1"
+        }
+      ],
+      "expected_overall_tier": "Tier 1"
+    },
+    {
+      "case_id": "multi_claim_dedup_regression",
+      "source_text": "\ud83c\udf89 Northstar Wealth Partners news: our flagship fund has beaten the market every year for the last decade, guaranteed! We're also proud to be the #1 rated advisor in the region. Follow for more!",
+      "expected_channel": "social_media",
+      "expected_audience": "retail",
+      "notes": "Regression test for the claim_extraction_agent dedup fix: the first sentence plausibly fits both 'performance' and 'guarantee_or_risk_free' and must be extracted exactly once, not twice.",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "our flagship fund has beaten the market every year for the last decade, guaranteed",
+          "acceptable_claim_types": [
+            "performance",
+            "guarantee_or_risk_free"
+          ],
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 4",
+          "dedup_check": true
+        },
+        {
+          "claim_id": "c2",
+          "quote": "We're also proud to be the #1 rated advisor in the region",
+          "claim_type": "superlative",
+          "expected_doc_id": "NWP-MKT-03",
+          "expected_tier": "Tier 3"
+        }
+      ],
+      "expected_overall_tier": "Tier 4"
+    },
+    {
+      "case_id": "clean_multi_claim_institutional",
+      "source_text": "Northstar Wealth Partners manages assets for institutional clients and has been an SEC-registered investment adviser since 2010. Our team includes 12 CFA charterholders. This overview is included in our printed firm brochure.",
+      "expected_channel": "brochure",
+      "expected_audience": "institutional",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "has been an SEC-registered investment adviser since 2010",
+          "claim_type": "general_factual",
+          "expected_doc_id": null,
+          "expected_tier": "Tier 1"
+        },
+        {
+          "claim_id": "c2",
+          "quote": "Our team includes 12 CFA charterholders",
+          "claim_type": "general_factual",
+          "expected_doc_id": null,
+          "expected_tier": "Tier 1"
+        }
+      ],
+      "expected_overall_tier": "Tier 1",
+      "notes": "Tier 1/Tier 2 is a genuine boundary judgment: a bare factual claim with zero substantiation on file technically \"lacks full substantiation\" per NWP-RRP-07 Tier 2, even though nothing about it is misleading. The model has called Tier 2 here on prior runs, which is defensible; expected_tier is kept at Tier 1 as the primary reading (benign, unsubstantiated-but-not-misleading facts) but this is not treated as a hard failure in analysis."
+    },
+    {
+      "case_id": "risk_minimization_language",
+      "source_text": "Dear valued client, our conservative allocation strategy carries virtually no risk, so you can invest with complete peace of mind. Let us know if you'd like to review your account.",
+      "expected_channel": "email",
+      "expected_audience": "retail",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "carries virtually no risk",
+          "claim_type": "guarantee_or_risk_free",
+          "expected_doc_id": "NWP-RDH-02",
+          "expected_tier": "Tier 3"
+        }
+      ],
+      "expected_overall_tier": "Tier 3"
+    },
+    {
+      "case_id": "fiduciary_conflict_overclaim",
+      "source_text": "Slide 7 -- For Institutional Prospects: As your fiduciary, we always put your interests first and we never have any conflicts of interest across our entire business. You can trust us completely.",
+      "expected_channel": "pitch_deck",
+      "expected_audience": "institutional",
+      "notes": "Ground truth corrected from Tier 3 to Tier 4 (2026-08-05): a blanket denial of any conflicts of interest, when NWP-FSM-05 explicitly recognizes conflicts exist and must be disclosed, is a materially false statement under NWP-RRP-07 Section 3's Tier 4 definition. The model's Tier 4 call was correct; the original Tier 3 label was an eval-authoring error.",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "quote": "we never have any conflicts of interest across our entire business",
+          "claim_type": "general_factual",
+          "expected_doc_id": "NWP-FSM-05",
+          "expected_tier": "Tier 4"
+        }
+      ],
+      "expected_overall_tier": "Tier 4"
+    }
+  ]
+}

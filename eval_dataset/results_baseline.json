@@ -1,0 +1,481 @@
+{
+  "summary": {
+    "n_cases": 12,
+    "claim_extraction_precision_avg": 0.6805555555555557,
+    "claim_extraction_recall_avg": 1.0,
+    "claim_type_accuracy": 1.0,
+    "dedup_pass_rate": 0.0,
+    "intake_channel_accuracy": 0.6666666666666666,
+    "intake_audience_accuracy": 0.8333333333333334,
+    "retrieval_recall_at_5": 0.45454545454545453,
+    "grounding_recall_at_3": 0.45454545454545453,
+    "tier_exact_accuracy": 0.5,
+    "tier_within_one_accuracy": 1.0,
+    "faithfulness_rate": 1.0,
+    "overall_tier_accuracy": 0.5833333333333334
+  },
+  "results": [
+    {
+      "case_id": "performance_absolute_beat_market",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra_predicted": 0
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        false
+      ],
+      "grounding_recall": [
+        false
+      ],
+      "tier_scores": [
+        {
+          "exact": true,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 3",
+        "actual": "Tier 3",
+        "correct": true
+      }
+    },
+    {
+      "case_id": "guarantee_cant_lose",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra_predicted": 0
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        true
+      ],
+      "grounding_recall": [
+        true
+      ],
+      "tier_scores": [
+        {
+          "exact": false,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 3",
+        "actual": "Tier 4",
+        "correct": false
+      }
+    },
+    {
+      "case_id": "comparative_better_than_competitors",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": false
+      },
+      "claim_extraction": {
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "extra_predicted": 2
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        true
+      ],
+      "grounding_recall": [
+        true
+      ],
+      "tier_scores": [
+        {
+          "exact": true,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 3",
+        "actual": "Tier 3",
+        "correct": true
+      }
+    },
+    {
+      "case_id": "superlative_number_one_advisor",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "extra_predicted": 1
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        false
+      ],
+      "grounding_recall": [
+        false
+      ],
+      "tier_scores": [
+        {
+          "exact": false,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 3",
+        "actual": "Tier 2",
+        "correct": false
+      }
+    },
+    {
+      "case_id": "fee_free_first_year",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra_predicted": 0
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        false
+      ],
+      "grounding_recall": [
+        false
+      ],
+      "tier_scores": [
+        {
+          "exact": false,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 3",
+        "actual": "Tier 2",
+        "correct": false
+      }
+    },
+    {
+      "case_id": "testimonial_no_disclosure",
+      "intake": {
+        "channel_correct": false,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "extra_predicted": 1
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        false
+      ],
+      "grounding_recall": [
+        false
+      ],
+      "tier_scores": [
+        {
+          "exact": true,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 2",
+        "actual": "Tier 2",
+        "correct": true
+      }
+    },
+    {
+      "case_id": "regulatory_endorsement_implication_sec",
+      "intake": {
+        "channel_correct": false,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "extra_predicted": 1
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        true
+      ],
+      "grounding_recall": [
+        true
+      ],
+      "tier_scores": [
+        {
+          "exact": true,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 4",
+        "actual": "Tier 4",
+        "correct": true
+      }
+    },
+    {
+      "case_id": "clean_no_violation",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "extra_predicted": 0
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        null
+      ],
+      "grounding_recall": [
+        null
+      ],
+      "tier_scores": [
+        {
+          "exact": true,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 1",
+        "actual": "Tier 1",
+        "correct": true
+      }
+    },
+    {
+      "case_id": "multi_claim_dedup_regression",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f1": 0.8,
+        "extra_predicted": 1
+      },
+      "claim_type_correct": [
+        true,
+        true
+      ],
+      "dedup_checks": [
+        false
+      ],
+      "retrieval_recall": [
+        false,
+        false
+      ],
+      "grounding_recall": [
+        false,
+        false
+      ],
+      "tier_scores": [
+        {
+          "exact": true,
+          "within_one": true
+        },
+        {
+          "exact": false,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true,
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 4",
+        "actual": "Tier 4",
+        "correct": true
+      }
+    },
+    {
+      "case_id": "clean_multi_claim_institutional",
+      "intake": {
+        "channel_correct": false,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f1": 0.8,
+        "extra_predicted": 1
+      },
+      "claim_type_correct": [
+        true,
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        null,
+        null
+      ],
+      "grounding_recall": [
+        null,
+        null
+      ],
+      "tier_scores": [
+        {
+          "exact": false,
+          "within_one": true
+        },
+        {
+          "exact": false,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true,
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 1",
+        "actual": "Tier 2",
+        "correct": false
+      }
+    },
+    {
+      "case_id": "risk_minimization_language",
+      "intake": {
+        "channel_correct": true,
+        "audience_correct": true
+      },
+      "claim_extraction": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "extra_predicted": 1
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        true
+      ],
+      "grounding_recall": [
+        true
+      ],
+      "tier_scores": [
+        {
+          "exact": true,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 3",
+        "actual": "Tier 3",
+        "correct": true
+      }
+    },
+    {
+      "case_id": "fiduciary_conflict_overclaim",
+      "intake": {
+        "channel_correct": false,
+        "audience_correct": false
+      },
+      "claim_extraction": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6666666666666666,
+        "extra_predicted": 1
+      },
+      "claim_type_correct": [
+        true
+      ],
+      "dedup_checks": [],
+      "retrieval_recall": [
+        true
+      ],
+      "grounding_recall": [
+        true
+      ],
+      "tier_scores": [
+        {
+          "exact": false,
+          "within_one": true
+        }
+      ],
+      "faithfulness": [
+        true
+      ],
+      "overall_tier": {
+        "expected": "Tier 3",
+        "actual": "Tier 4",
+        "correct": false
+      }
+    }
+  ]
+}
