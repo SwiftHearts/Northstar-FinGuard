@@ -7,10 +7,18 @@ Usage:
 """
 
 import html
+import sys
+from pathlib import Path
 
 import streamlit as st
 
-from src.graph.build_graph import build_graph
+# `streamlit run src/ui/app.py` only puts src/ui/ on sys.path, so add the repo root to make
+# the `src` package importable (needed on Streamlit Community Cloud).
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from src.graph.build_graph import build_graph  # noqa: E402
 
 st.set_page_config(page_title="Northstar-FinGuard", layout="wide")
 
