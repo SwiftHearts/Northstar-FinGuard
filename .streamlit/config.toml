@@ -1,0 +1,3 @@
+[server]
+# Stops the watcher from crawling transformers vision modules (torchvision spam in logs)
+fileWatcherType = "none"
